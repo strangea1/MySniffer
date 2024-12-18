@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPF_STANDARD.ContentSearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_STANDARD"
+        mc:Ignorable="d"
+        Title="ContentSearchWindow" Height="200" Width="380">
+    <Grid>
+        <Grid Background="LightGray" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="38"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Content="输入搜索内容" FontSize=" 10" Grid.Row="0"/>
+
+            <TextBox Name="ContentSearchBox" Background="White" PreviewKeyDown="SiftContentTextBox_PreviewKeyDown" TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="2"/>
+            <Button Name="ReturnButton" Content="OK" Background="White" Click="ReturnButton_Click" Grid.Row="2"/>
+
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="WPF_STANDARD.AddressSiftEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_STANDARD"
+        mc:Ignorable="d"
+        Title="AddressSiftEditWindow" Height="200" Width="380">
+    <Grid>
+        <Grid Background="LightGray" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="21*"/>
+                <RowDefinition Height="29*"/>
+                <RowDefinition Height="31*"/>
+                <RowDefinition Height="31*"/>
+                <RowDefinition Height="38"/>
+
+            </Grid.RowDefinitions>
+
+            <TextBox Name="FromBox" Background="White" TextChanged="OnInputSiftContent" PreviewKeyDown="FirstSiftContentTextBox_PreviewKeyDown" TextWrapping="Wrap" Grid.Row="1"/>
+
+            <Label Content="来源地址(保持空白以不做筛选,输入格式：x.x.x.x）" FontSize=" 10" Grid.Row="0"/>
+            <Label Content="目的地址(保持空白以不做筛选,输入格式：x.x.x.x）" FontSize="10" Grid.Row="2" Margin="0,3,0,7"/>
+
+            <TextBox Name="ToBox" Background="White" TextChanged="OnInputSiftContent" PreviewKeyDown="SecondSiftContentTextBox_PreviewKeyDown" TextWrapping="Wrap" Grid.Row="3" Grid.RowSpan="2"/>
+
+            <Button Name="ReturnButton" Content="OK" Background="White" Click="ReturnButton_Click" Grid.Row="4"/>
+
+
+        </Grid>
+    </Grid>
+</Window>

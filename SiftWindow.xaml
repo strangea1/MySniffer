@@ -1,0 +1,59 @@
+﻿<Window x:Class="WPF_STANDARD.SiftWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_STANDARD"
+        mc:Ignorable="d"
+        Title="SiftWindow" Height="538" Width="380">
+
+    <Window.Resources>
+        <local:SiftDataConverter x:Key="SDC"/>
+        <RoutedUICommand x:Key="SaveCommand" Text="Save"/>
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+S" Command="{StaticResource SaveCommand}"/>
+    </Window.InputBindings>
+
+    <Grid >
+        <Grid Background="LightGray" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Top Menu-->
+            <DockPanel >
+                <Menu  Margin="2,2,2,0" Background="White">
+                    <Menu.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="BorderBrush" Value="Gray" />
+                            <Setter Property="BorderThickness" Value="1" />
+                        </Style>
+                    </Menu.ItemContainerStyle>
+                    <MenuItem Name="Settings_Add_MenuItem" Header="Add" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" Height="26" Width="41"/>
+                </Menu>
+            </DockPanel>
+
+            <ListView Name="SiftDatasListView" Grid.Row="1" Margin="2" MouseDoubleClick="SiftDatasListView_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Content" DisplayMemberBinding="{Binding Content}" Width="260"/>
+                        <GridViewColumn Header="SiftDataType" DisplayMemberBinding="{Binding SiftDataType,Converter= {StaticResource SDC }}" Width="80" />
+                    </GridView>
+                </ListView.View>
+
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Click="Edit_Click"/>
+                        <MenuItem Header="Delete" Click="Delete_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
